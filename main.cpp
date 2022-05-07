@@ -17,7 +17,7 @@ int main(int argc, char const *argv[])
     init(board);
 
 
-
+    std::cout << board.point.first;
     std::cout << board.board[0][0] << std::endl;
 
 
