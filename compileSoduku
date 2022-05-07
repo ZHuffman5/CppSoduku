@@ -1,4 +1,4 @@
 #!/bin/bash
-g++ main.cpp Utility.cpp -o sudoku
+g++ /home/zeak/C_Programming/cpp_soduku/main.cpp /home/zeak/C_Programming/cpp_soduku/Utility.cpp -o /home/zeak/C_Programming/cpp_soduku/sudoku.exe
 exec ./sudoku
 
