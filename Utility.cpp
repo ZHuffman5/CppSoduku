@@ -47,8 +47,13 @@ void printBoard(Board &board, int row, int col) {
         for (int j=0; j<BOARDSIZE; j++) 
             newboard[i][j] = board.board[i][j] == 0 ? " " : std::to_string(abs(board.board[i][j]));     
 
-    if (row >= 0 && col >= 0)
-        newboard[row][col] = "\e[101m" + newboard[row][col] + "\e[0m";      
+    if (row >= 0 && col >= 0) {
+        if (board.board[row][col] < 0)
+            newboard[row][col] = "\e[42;90m" + newboard[row][col] + "\e[0m";     
+        else
+            newboard[row][col] = "\e[101m" + newboard[row][col] + "\e[0m";    
+    }
+ 
     /* 
         ┳ \u2533
         ┻ \u253b
