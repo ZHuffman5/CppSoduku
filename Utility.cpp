@@ -15,3 +15,10 @@ int getArrowKey() {
     int a = getch();
     return a;
 }
+
+void printMenu(int active=-1) {
+    std::string TRC = "\u250f";
+    TRC = "\e[91m" + TRC + "\e[0m";
+    std::cout << TRC << "\u2501\u2501\u2501\u2533    \n";
+    std::cout << "\u2503 x \u2503\n";
+}

@@ -13,3 +13,4 @@ typedef struct {
 
 int getArrowKey();
 void init(Board&);
+void printMenu(int=-1);

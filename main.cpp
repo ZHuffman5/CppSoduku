@@ -15,11 +15,11 @@ int main(int argc, char const *argv[])
     Board board;
 
     init(board);
+    clear();   
+    std::cout << "\n\n";
 
-
-    std::cout << board.point.first;
-    std::cout << board.board[0][0] << std::endl;
-
+    printMenu();
+    std::cout << "\n\n";
 
     return 0;
 }
