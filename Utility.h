@@ -1,6 +1,6 @@
 #include <iostream>
 
-#define BOARDSIZE 5
+#define BOARDSIZE 9
 
 enum arrowKey { KEY_UP = 65, KEY_DOWN = 66, KEY_LEFT = 68, KEY_RIGHT = 67 };
 
@@ -13,4 +13,4 @@ typedef struct {
 
 int getArrowKey();
 void init(Board&);
-void printMenu(int=-1);
+void printBoard(Board&, int=-1, int=-1);

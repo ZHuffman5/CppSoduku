@@ -18,7 +18,7 @@ int main(int argc, char const *argv[])
     clear();   
     std::cout << "\n\n";
 
-    printMenu();
+    printBoard(board);
     std::cout << "\n\n";
 
     return 0;

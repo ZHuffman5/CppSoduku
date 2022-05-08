@@ -1,5 +1,5 @@
 #!/bin/bash
-g++ main.cpp Utility.cpp -o sudoku.exe
+CODE=g++ main.cpp Utility.cpp -o sudoku.exe
 exec ./sudoku.exe
 
 
