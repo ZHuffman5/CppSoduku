@@ -1,9 +1,9 @@
 #!/bin/bash
-output=$(g++ main.cpp Utility.cpp 2>&1) 
+output=$(g++ main.cpp Utility.cpp -o sudoku.exe 2>&1) 
 if [[ $? != 0 ]]; then
     # There was an error, display the error in $output
     echo -e "Error:\n$output" 
 else
     # Compilation successfull
-    exec ./a.out
+    exec ./sudoku.exe
 fi
