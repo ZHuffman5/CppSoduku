@@ -17,10 +17,9 @@ int main(int argc, char const *argv[])
     init(board);
     clear();   
     std::cout << "\n\n";
-
-    printBoard(board);
+    printBoard(board, board.point.first, board.point.second);
     std::cout << "\n\n";
 
-    return 0;
+    return 1;
 }
 

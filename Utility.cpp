@@ -15,7 +15,7 @@ int getArrowKey() {
     return a;
 }
 
-void repeatString(std::string str, std::string board[][9]=NULL, int row=0, int times=7) {
+void repeatString(std::string str, int times=7, std::string board[][9]=NULL, int row=0) {
     for (int i=0; i<times; i++) {
         if (board) {
             if (times != 7) 
@@ -30,12 +30,13 @@ void repeatString(std::string str, std::string board[][9]=NULL, int row=0, int t
 void printBoard(Board &board, int row, int col) {
     std::string newboard[9][9];
     for (int i=0; i<BOARDSIZE; i++)
-        for (int j=0; j<BOARDSIZE; j++)
-            newboard[i][j] = std::to_string(board.board[i][j]);
+        for (int j=0; j<BOARDSIZE; j++) 
+            newboard[i][j] = board.board[i][j] == 0 ? " " : std::to_string(abs(board.board[i][j]));     
 
-    if (row >=0 && col >= 0)
-        newboard[row][col] = "\e[91m" + newboard[row][col] + "\e[0m";
+    if (row >= 0 && col >= 0)
+        newboard[row][col] = "\e[101m" + newboard[row][col] + "\e[0m";
 
+        
     /* 
         ┳ \u2533
         ┻ \u253b
@@ -55,8 +56,17 @@ void printBoard(Board &board, int row, int col) {
 
     std::cout << "\u250f\u2501\u2501\u2501\u2533";
     repeatString("\u2501\u2501\u2501\u2533");
-    std::cout << "\u2501\u2501\u2501\u2513 \n";
-
-    std::cout << "\u2503";
-    repeatString("  \u2503", newboard, 0, 9);
+    std::cout << "\u2501\u2501\u2501\u2513";
+    for (int i=0; i<8; i++) {
+        std::cout << "\n\u2503";
+        repeatString("  \u2503", 9, newboard, i);
+        std::cout << "\n\u2523";
+        repeatString("\u2501\u2501\u2501\u254b", 8);
+        std::cout << "\u2501\u2501\u2501\u252b";
+    }
+    std::cout << "\n\u2503";
+    repeatString("  \u2503", 9, newboard, 8);
+    std::cout << "\n\u2517\u2501\u2501\u2501\u253b";
+    repeatString("\u2501\u2501\u2501\u253b");
+    std::cout << "\u2501\u2501\u2501\u251b";
 }
