@@ -1,18 +1,32 @@
 #include <conio.h>
 #include "Utility.h"
 
+#ifdef _WIN32
+    int getArrowKey() {
+        int first = getch();
+        if (first == 10)
+            return first;
+        int a = getch();
+        return a;
+    }
+#else
+    int getArrowKey() {
+        int first = getch();
+        if (first == 10)
+            return first;
+        getch();
+        int a = getch();
+        return a;
+    }
+#endif
+
 void init(Board &board) {
+    board.point.first = 0;
+    board.point.second = 0;
     for (int i=0; i<BOARDSIZE; i++) {
         for (int j=0; j<BOARDSIZE; j++)
             board.board[i][j] = 0;
     }
-}
-
-int getArrowKey() {
-    getch();
-    getch();
-    int a = getch();
-    return a;
 }
 
 void repeatString(std::string str, int times=7, std::string board[][9]=NULL, int row=0) {
@@ -34,9 +48,7 @@ void printBoard(Board &board, int row, int col) {
             newboard[i][j] = board.board[i][j] == 0 ? " " : std::to_string(abs(board.board[i][j]));     
 
     if (row >= 0 && col >= 0)
-        newboard[row][col] = "\e[101m" + newboard[row][col] + "\e[0m";
-
-        
+        newboard[row][col] = "\e[101m" + newboard[row][col] + "\e[0m";      
     /* 
         ┳ \u2533
         ┻ \u253b
@@ -53,7 +65,6 @@ void printBoard(Board &board, int row, int col) {
 
         ╋ \u254b
     */
-
     std::cout << "\u250f\u2501\u2501\u2501\u2533";
     repeatString("\u2501\u2501\u2501\u2533");
     std::cout << "\u2501\u2501\u2501\u2513";
