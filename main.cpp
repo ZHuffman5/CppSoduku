@@ -9,12 +9,9 @@ int main(int argc, char const *argv[])
     int key;
 
     init(board);  
-    while (key != 10) {
-        clear();
-        std::cout << "\n\n";
+    while (key != KEY_ENTER) {
         printBoard(board, board.point.first, board.point.second);
-        std::cout << "\n\n";
-        key = getArrowKey();
+        key = getKey();
         switch(key) {
             case KEY_UP:
                 board.point.first -= board.point.first == 0 ? 0 : 1;
@@ -28,9 +25,17 @@ int main(int argc, char const *argv[])
             case KEY_RIGHT:
                 board.point.second += board.point.second == BOARDSIZE-1 ? 0 : 1;
                 break;
+            case KEY_ENTER:
+                printBoard(board, board.point.first, board.point.second, true);
+                
+                break;
         }
     }
-    
+    std::cout << "Enter Num: ";
+    int c;
+    c = getValue();
+    std::cout << (int)c << std::endl;
+    std::cout << (int)c << std::endl;
     
 
     return 1;
