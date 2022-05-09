@@ -29,13 +29,15 @@ int main(int argc, char const *argv[])
                 break;
             case KEY_ENTER:
                 int val = 0;
-                do {
-                    printBoard(board, boardX, boardY, true);
-                    std::cout << "Enter Num: ";
-                    val = getValue();
-                    short &temp = board.board[boardX][boardY];
-                    temp = val == KEY_ENTER ? temp : (short)val;
-                } while (val != KEY_ENTER);
+                if (board.board[boardX][boardY] >= 0) {
+                    do {
+                        printBoard(board, boardX, boardY, true);
+                        std::cout << "Enter Num: ";
+                        val = getValue();
+                        short &temp = board.board[boardX][boardY];
+                        temp = val == KEY_ENTER ? temp : (short)val;
+                    } while (val != KEY_ENTER);
+                }
                 break;
         }
     }
