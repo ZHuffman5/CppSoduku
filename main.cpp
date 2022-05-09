@@ -6,36 +6,44 @@
 int main(int argc, char const *argv[])
 {
     Board board;
+    bool isEditing;
     int key;
 
     init(board);  
-    while (key != KEY_ENTER) {
-        printBoard(board, board.point.first, board.point.second);
+    while (true) {
+        short &boardX = board.point.first;
+        short &boardY = board.point.second;
+        printBoard(board, boardX, boardY);
         key = getKey();
         switch(key) {
             case KEY_UP:
-                board.point.first -= board.point.first == 0 ? 0 : 1;
+                boardX -= boardX == 0 ? 0 : 1;
                 break;
             case KEY_DOWN:
-                board.point.first += board.point.first == BOARDSIZE-1 ? 0 : 1;
+                boardX += boardX == BOARDSIZE-1 ? 0 : 1;
                 break;
             case KEY_LEFT:
-                board.point.second -= board.point.second == 0 ? 0 : 1;
+                boardY -= boardY == 0 ? 0 : 1;
                 break;
             case KEY_RIGHT:
-                board.point.second += board.point.second == BOARDSIZE-1 ? 0 : 1;
+                boardY += boardY == BOARDSIZE-1 ? 0 : 1;
                 break;
             case KEY_ENTER:
-                printBoard(board, board.point.first, board.point.second, true);
-                
+                int val = 0;
+                do {
+                    printBoard(board, boardX, boardY, true);
+                    std::cout << "Enter Num: ";
+                    val = getValue();
+                    short &temp = board.board[boardX][boardY];
+                    temp = val == KEY_ENTER ? temp : (short)val;
+                } while (val != KEY_ENTER);
+                printBoard(board, boardX, boardY);
+
                 break;
         }
     }
-    std::cout << "Enter Num: ";
-    int c;
-    c = getValue();
-    std::cout << (int)c << std::endl;
-    std::cout << (int)c << std::endl;
+    
+    
     
 
     return 1;

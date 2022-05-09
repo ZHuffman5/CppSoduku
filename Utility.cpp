@@ -53,11 +53,11 @@ void printBoard(Board &board, int row, int col, bool selected) {
 
     if (row >= 0 && col >= 0) {
         if (board.board[row][col] < 0)
-            newboard[row][col] = "\e[101;90m" + newboard[row][col] + "\e[0m";     
+            newboard[row][col] = "\e[101;30m" + newboard[row][col] + "\e[0m";     
         else if (selected)
-            newboard[row][col] = "\e[45;90m" + newboard[row][col] + "\e[0m";    
+            newboard[row][col] = "\e[45;30m" + newboard[row][col] + "\e[0m";    
         else
-            newboard[row][col] = "\e[102m" + newboard[row][col] + "\e[0m";    
+            newboard[row][col] = "\e[102;30m" + newboard[row][col] + "\e[0m";    
     }
 
     clear();
@@ -100,7 +100,10 @@ void printBoard(Board &board, int row, int col, bool selected) {
 }
 
 int getValue() {
-    char c = getch();
+    int y = getch();
+    if (y == 10)
+        return y;
+    char c = (char)y;
     int x = (int)c -'0';
     return x <= 9 ? x : 0;
 }
