@@ -6,7 +6,6 @@
 int main(int argc, char const *argv[])
 {
     Board board;
-    bool isEditing;
     int key;
 
     init(board);  
@@ -37,8 +36,6 @@ int main(int argc, char const *argv[])
                     short &temp = board.board[boardX][boardY];
                     temp = val == KEY_ENTER ? temp : (short)val;
                 } while (val != KEY_ENTER);
-                printBoard(board, boardX, boardY);
-
                 break;
         }
     }
